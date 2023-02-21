@@ -21,7 +21,6 @@ namespace AuthServer.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Session>> Get()
         {
-            //int.TryParse(User.Claims.FirstOrDefault(c => c.Type == "id")?.Value, out int userId);
             return Ok(_dataContext.Sessions?.Where(s => s.UserId == Identity.Id).OrderByDescending(s=>s.DateTime));
         }
     }

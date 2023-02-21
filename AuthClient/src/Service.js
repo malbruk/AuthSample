@@ -11,7 +11,6 @@ function saveAccessToken(authResult) {
 
 function setAuthorizationBearer() {
   const accessToken = localStorage.getItem("access_token");
-  console.log("accessToken", accessToken);
   if (accessToken) {
     axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
   }
@@ -22,7 +21,6 @@ axios.interceptors.response.use(
     return response;
   },
   function(error) {
-    console.log("error", error);
     if (error.response.status == 401) {
       return (window.location.href = "/login");
     }
@@ -34,16 +32,13 @@ export default {
   getLoginUser: () => {
     const accessToken = localStorage.getItem("access_token");
     if (accessToken) {
-      console.log("jwt_decode(accessToken)", jwt_decode(accessToken));
       return jwt_decode(accessToken);
     }
     return null;
   },
 
   logout:()=>{
-    console.log('clear access_token')
     localStorage.setItem("access_token", "");
-    console.log('access_token',localStorage.getItem("access_token") )
   },
 
   register: async (email, password) => {
