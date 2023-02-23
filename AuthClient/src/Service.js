@@ -21,7 +21,7 @@ axios.interceptors.response.use(
     return response;
   },
   function(error) {
-    if (error.response.status == 401) {
+    if (error.response.status === 401) {
       return (window.location.href = "/login");
     }
     return Promise.reject(error);
