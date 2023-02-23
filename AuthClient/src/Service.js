@@ -1,7 +1,7 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 
-axios.defaults.baseURL = "https://localhost:7101/api";
+axios.defaults.baseURL = process.env.API_URL;
 setAuthorizationBearer();
 
 function saveAccessToken(authResult) {
