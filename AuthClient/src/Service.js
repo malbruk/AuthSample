@@ -1,7 +1,8 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 
-axios.defaults.baseURL = process.env.API_URL;
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+console.log('process.env.API_URL', process.env.REACT_APP_API_URL)
 setAuthorizationBearer();
 
 function saveAccessToken(authResult) {
